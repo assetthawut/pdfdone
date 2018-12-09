@@ -2,69 +2,34 @@ jsonvar = {
     "display": "pdf",
     "components": [
         {
+            "label": "Text Field",
+            "allowMultipleMasks": "false",
+            "showWordCount": "false",
+            "showCharCount": "false",
+            "type": "textfield",
             "input": "true",
             "key": "textField",
-            "label": "Text Field",
-            "type": "textfield",
+            "defaultValue": null,
+            "validate": {
+                "required": "true",
+                "unique": "false",
+                "customMessage": null,
+                "json": null
+            },
+            "conditional": {
+                "show": null,
+                "json": null,
+                "when": null
+            },
             "overlay": {
                 "page": "1",
-                "left": "961",
-                "top": "453",
+                "left": "93",
+                "top": "21",
                 "height": "20",
                 "width": "100"
-            }
-        },
-        {
-            "input": "true",
-            "key": "textField2",
-            "label": "Text Field",
-            "type": "textfield",
-            "overlay": {
-                "page": "1",
-                "left": "961",
-                "top": "493",
-                "height": "20",
-                "width": "100"
-            }
-        },
-        {
-            "input": "true",
-            "key": "textField3",
-            "label": "Text Field",
-            "type": "textfield",
-            "overlay": {
-                "page": "1",
-                "left": "963",
-                "top": "551",
-                "height": "20",
-                "width": "100"
-            }
-        },
-        {
-            "input": "true",
-            "key": "textField4",
-            "label": "Text Field",
-            "type": "textfield",
-            "overlay": {
-                "page": "1",
-                "left": "963",
-                "top": "580",
-                "height": "20",
-                "width": "100"
-            }
-        },
-        {
-            "input": "true",
-            "key": "textField5",
-            "label": "Text Field",
-            "type": "textfield",
-            "overlay": {
-                "page": "1",
-                "left": "962",
-                "top": "604",
-                "height": "20",
-                "width": "100"
-            }
+            },
+            "inputFormat": "plain",
+            "customConditional": null
         }
     ],
     "settings": {
@@ -74,7 +39,6 @@ jsonvar = {
         }
     }
 }
-
 console.log('== form js ==');
 window.onload = function () {
     Formio.createForm(document.getElementById('formio'),
