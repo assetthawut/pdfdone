@@ -103,4 +103,16 @@ class PdfController extends Controller
     {
         //
     }
+
+
+    public function showjson(){
+
+        $data = DB::table('pdfforms')->select('pdf_form_answer')->where('id',9)->get();
+
+        foreach($data as $key){
+
+            $test = $key->pdf_form_answer;
+        }
+        return $test;
+    }
 }

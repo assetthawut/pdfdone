@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 
 // PDF  Controller 
+Route::get('pdf/form/show','PdfController@showjson');
 Route::resource('pdf/builder', 'PdfController');
 
 // Form Controller
