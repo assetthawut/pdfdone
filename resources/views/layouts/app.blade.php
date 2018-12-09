@@ -10,10 +10,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     
     <!-- Formio Source -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
     {{-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> --}}
     <link rel='stylesheet' href='https://unpkg.com/formiojs@3.3.7/dist/formio.full.min.css'>
     <script src='https://unpkg.com/formiojs@3.3.7/dist/formio.full.min.js'></script>
+    <script src="{{ asset('js/formio.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

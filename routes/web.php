@@ -19,6 +19,13 @@ Route::get('/', function () {
 // PDF  Controller 
 Route::resource('pdf/builder', 'PdfController');
 
+// Form Controller
+Route::get('pdf/form/test', 'FormController@test');
+Route::resource('pdf/form', 'FormController');
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

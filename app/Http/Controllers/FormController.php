@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Carbon\Carbon;
 
-class PdfController extends Controller
+class FormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,9 @@ class PdfController extends Controller
      */
     public function index()
     {
-        // Show builder 
-        return view('pdf.builder');
+        //
+
+        return "sdfsdfsdf";
     }
 
     /**
@@ -27,6 +26,8 @@ class PdfController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -37,26 +38,7 @@ class PdfController extends Controller
      */
     public function store(Request $request)
     {
-        // How to use object  $request->json_components;
         //
-        
-
-        $pdf_form_answer    = json_encode($request->json_components,true);
-        $pdf_form_empty     = json_encode($request->json_components_empty,true);
-
-
-        DB::table('pdfforms')->insert(
-            [
-                'pdf_owner_id'      => '1',
-                'title'             => 'test',
-                'pdf_form_answer'   =>  $pdf_form_answer,
-                'pdf_form_empty'    =>  $pdf_form_empty,
-                'created_at'        =>  Carbon::now(),
-                'updated_at'        =>  Carbon::now()
-            ]
-        );
-        return "insert done";
-
     }
 
     /**
@@ -102,5 +84,11 @@ class PdfController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function test(){
+
+
+        return view('form.test');
     }
 }
