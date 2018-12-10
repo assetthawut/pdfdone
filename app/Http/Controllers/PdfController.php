@@ -107,11 +107,13 @@ class PdfController extends Controller
         //  $pdf_form_answer['test'] = 2555;
         //  return $pdf_form_answer;
         
-        return $pdf_form_answer;
+        $obj = json_decode($pdf_form_answer, TRUE);
+        
 
-        foreach($pdf_form_answer as $key=>$value){
+        foreach($obj as $key=>$value){
 
-            echo $value;
+            $obj['5555555'] = "5555555";
+            print_r($obj);
             
         }
 
