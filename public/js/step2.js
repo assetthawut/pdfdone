@@ -41,7 +41,8 @@ $( document ).ready(function() {
           temp = {}
           temp = builder
           builder = temp;
-  
+        
+          
 
           components = builder.instance.schema.components;
           emptySchema = temp.instance.schema;
@@ -75,20 +76,30 @@ $( document ).ready(function() {
         }
   
       //   Object.freeze(emptySchema)
+
+
         emptySchema = Object.unfreeze(emptySchema);
-  
         emptySchema.components = emptyComponents
   
-   
-  
+        builderTemp = builder.instance.schema
+
+     
+
+        console.log(" builderTemp => ",builderTemp);
+        console.log(" emptySchema => ",emptySchema);
+
+        debugger
+        
           $.ajax({
               url     : '/pdf/form/create/pdfbyid',
               method  : 'post',
+              dataType: "JSON",
               data    : {
                   pdf_owner               : "1",
+                  pdf_id                  : pdf_id,
                   title                   : "Test",
                   type_id                 : $("#pdftype option:selected" ).val(),
-                  json_components         : builder.instance.schema,
+                  json_components         : builderTemp,
                   json_components_empty   : emptySchema
               },
               headers:

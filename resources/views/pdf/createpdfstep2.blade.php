@@ -10,11 +10,15 @@
         <button type="button" id="send">Send</button>
          <div id="pdfBuilder"></div>    
          @foreach ($pdfDatas as $pdfData)
-             <?php  $pdfpath = $pdfData->pdfpath ?>
+             <?php  
+                    $pdfpath = $pdfData->pdfpath;
+                    $pdfid   = $pdfData->id;
+             ?>
          @endforeach
     </div>
     <script>
         pdfpath = {!! json_encode($pdfpath) !!};
+        pdf_id  = {!! json_encode($pdfid) !!}
     </script>
     <script type="text/javascript" src="{{ URL::asset('js/step2.js') }}"></script>
 @endsection

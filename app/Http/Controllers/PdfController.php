@@ -87,16 +87,40 @@ class PdfController extends Controller
 
     public function storePdfById(Request $request){
 
+    //    if( isset($json_components['components']) != true) {
+    //         $request->json_components['components'] = [];
+    //    }
+    //    return $request->json_components;
+
+
+
+  
+       
        // Store to pdfforms table
        $pdf_owner_id       = $request->pdf_owner;      
+       $pdf_id             = $request->pdf_id;
        $title              = $request->title;
        $type_id            = $request->type_id;
        $pdf_form_answer    = json_encode($request->json_components,true);
        $pdf_form_empty     = json_encode($request->json_components_empty,true);
 
+        //  $pdf_form_answer['test'] = 2555;
+        //  return $pdf_form_answer;
+        
+        return $pdf_form_answer;
+
+        foreach($pdf_form_answer as $key=>$value){
+
+            echo $value;
+            
+        }
+
+        return;
+
        DB::table('pdfforms')->insert(
            [
                 'pdf_owner_id'          =>  $pdf_owner_id,
+                'pdf_id'                =>  $pdf_id, 
                 'title'                 =>  $title ,
                 'pdf_form_answer'       =>  $pdf_form_answer,
                 'pdf_form_empty'        =>  $pdf_form_empty,

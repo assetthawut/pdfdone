@@ -15,6 +15,7 @@ class CreatePdfformsTable extends Migration
     {
         Schema::create('pdfforms', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('pdf_id');
             $table->string('pdf_owner_id');
             $table->string('title');
             $table->longText('pdf_form_answer');
