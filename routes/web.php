@@ -18,6 +18,10 @@ Route::get('/', function () {
 
 // PDF  Controller 
 Route::get('pdf/form/show','PdfController@showjson');
+Route::get('pdf/form/create/pdfbyid/{id}','PdfController@createPdfById');
+Route::post('pdf/form/create/pdfbyid','PdfController@storePdfById');
+
+
 Route::resource('pdf/builder', 'PdfController');
 
 // Form Controller

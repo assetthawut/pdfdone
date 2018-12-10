@@ -27,6 +27,7 @@ class PdfController extends Controller
     public function create()
     {
         //
+        return view('pdf.createpdf');
     }
 
     /**
@@ -41,21 +42,71 @@ class PdfController extends Controller
         //
         
 
-        $pdf_form_answer    = json_encode($request->json_components,true);
-        $pdf_form_empty     = json_encode($request->json_components_empty,true);
+        // $pdf_form_answer    = json_encode($request->json_components,true);
+        // $pdf_form_empty     = json_encode($request->json_components_empty,true);
 
 
-        DB::table('pdfforms')->insert(
+        // DB::table('pdfforms')->insert(
+        //     [
+        //         'pdf_owner_id'      => '1',
+        //         'title'             => 'test',
+        //         'pdf_form_answer'   =>  $pdf_form_answer,
+        //         'pdf_form_empty'    =>  $pdf_form_empty,
+        //         'created_at'        =>  Carbon::now(),
+        //         'updated_at'        =>  Carbon::now()
+        //     ]
+        // );
+        // return "insert done";
+
+        DB::table('pdfs')->insert(
             [
-                'pdf_owner_id'      => '1',
-                'title'             => 'test',
-                'pdf_form_answer'   =>  $pdf_form_answer,
-                'pdf_form_empty'    =>  $pdf_form_empty,
-                'created_at'        =>  Carbon::now(),
-                'updated_at'        =>  Carbon::now()
+                'title'         => $request->input('title'),
+                'pdf_owner_id'  => $request->input('pdf_owner_id'),
+                'pdfpath'       => $request->input('pdfpath'),
+                'created_at'    =>  Carbon::now(),
+                'updated_at'    =>  Carbon::now()
             ]
         );
-        return "insert done";
+
+        $lastInsertId = DB::getPdo()->lastInsertId();
+        return redirect('/pdf/form/create/pdfbyid/'.$lastInsertId);
+        
+
+    }
+
+
+    public function createPdfById(Request $request){
+
+        // get form 
+        // $id is lastinsert id;
+        $id = $request->id;
+        $pdfDatas = DB::table('pdfs')->where('id',$id)->get();
+
+        return view('pdf.createpdfstep2',['pdfDatas' => $pdfDatas]);      
+    }
+
+    public function storePdfById(Request $request){
+
+       // Store to pdfforms table
+       $pdf_owner_id       = $request->pdf_owner;      
+       $title              = $request->title;
+       $type_id            = $request->type_id;
+       $pdf_form_answer    = json_encode($request->json_components,true);
+       $pdf_form_empty     = json_encode($request->json_components_empty,true);
+
+       DB::table('pdfforms')->insert(
+           [
+                'pdf_owner_id'          =>  $pdf_owner_id,
+                'title'                 =>  $title ,
+                'pdf_form_answer'       =>  $pdf_form_answer,
+                'pdf_form_empty'        =>  $pdf_form_empty,
+                'type_id'               =>  $type_id ,
+                'created_at'            =>  Carbon::now(),
+                'updated_at'            =>  Carbon::now()
+           ]
+           );
+
+        return "insert Done";
 
     }
 
